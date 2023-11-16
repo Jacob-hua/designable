@@ -93,6 +93,7 @@ import {
   ArrayCards,
 } from '@formily/antd'
 import { Card, Slider, Rate } from 'antd'
+import { TestComp } from '../../src'
 
 const Text: React.FC<{
   value?: string
@@ -134,6 +135,7 @@ const SchemaField = createSchemaField({
     Card,
     Slider,
     Rate,
+    TestComp,
   },
 })
 

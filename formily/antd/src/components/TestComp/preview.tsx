@@ -1,0 +1,117 @@
+import React, { useState, useMemo } from 'react'
+import { Col, Row, Button, Input } from 'antd'
+import { DeleteOutlined } from '@ant-design/icons'
+import { Select as AntdSelect, Space } from '@formily/antd'
+import { createBehavior, createResource } from '@designable/core'
+import { DnFC } from '@designable/react'
+import { createFieldSchema } from '../Field'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
+import cls from 'classnames'
+import './styles.less'
+import { Container } from '../../common/Container'
+
+export interface IDesignableTestCompProps {
+  value?: string
+  style?: React.CSSProperties
+  className?: string
+}
+export interface SparePart {
+  label: string
+  value: string
+  sparenum?: number
+}
+
+export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
+  const [selectedItems, setSelectedItems] = useState<SparePart[]>([])
+  const handleChange = (item) => {
+    // eslint-disable-next-line no-console
+    console.log(item)
+    const flag = selectedItems.some(({ value }) => item.value === value)
+    if (flag) {
+      return
+    }
+    let sparePart = item
+    sparePart.sparenum = 1
+    let spareParts = [...selectedItems]
+    spareParts.push(sparePart)
+    setSelectedItems(spareParts)
+  }
+  const SelectItemRows = selectedItems.map((row) => {
+    const deleteSpare = (itemnum) => {}
+    return (
+      <>
+        <Row>
+          <Col span={20}>{row.label}</Col>
+          <Col span={4}>
+            <DeleteOutlined onClick={deleteSpare(row.value)} />
+          </Col>
+        </Row>
+        <Row>
+          <div>
+            <Button onClick={}>-</Button>
+          </div>
+          <div>
+            <Input disabled value={row.sparenum}></Input>
+          </div>
+          <div>
+            <Button>+</Button>
+          </div>
+        </Row>
+      </>
+    )
+  })
+  return (
+    <div className={cls(props.className)}>
+      <AntdSelect
+        showSearch
+        labelInValue
+        style={{ width: '100%' }}
+        onChange={handleChange}
+        options={[
+          {
+            label: 'aaa',
+            value: '001',
+          },
+          {
+            label: 'bbb',
+            value: '002',
+          },
+          {
+            label: 'ccc',
+            value: '003',
+          },
+          {
+            label: 'ddd',
+            value: '004',
+          },
+        ]}
+      ></AntdSelect>
+      {SelectItemRows}
+    </div>
+  )
+}
+
+TestComp.Behavior = createBehavior({
+  name: 'TestComp',
+  extends: ['Field'],
+  selector: (node) => node.props['x-component'] === 'TestComp',
+  designerProps: {
+    propsSchema: createFieldSchema(),
+  },
+  designerLocales: AllLocales.TestComp,
+})
+
+TestComp.Resource = createResource({
+  icon: 'TextSource',
+  elements: [
+    {
+      componentName: 'Field',
+      props: {
+        title: '备品',
+        'x-decorator': 'FormItem',
+        'x-component': 'TestComp',
+      },
+    },
+  ],
+})
