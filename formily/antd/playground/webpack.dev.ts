@@ -49,8 +49,11 @@ export default {
     // new BundleAnalyzerPlugin()
   ],
   devServer: {
-    host: '127.0.0.1',
+    // host: '127.0.0.1',
     open: true,
     port: PORT,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
 }

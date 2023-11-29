@@ -37,6 +37,10 @@ export default {
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: '[name].[hash].bundle.js',
+    library: `designable-[name]`,
+    libraryTarget: 'umd',
+    jsonpFunction: `webpackJsonp_designable`,
+    globalObject: 'window',
   },
   resolve: {
     modules: ['node_modules'],

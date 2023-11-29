@@ -57,7 +57,8 @@
     "antd": "^4.0.0",
     "react": ">=16.8.0 || >=17.0.0",
     "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
+    "react-is": ">=16.8.0 || >=17.0.0",
+    "react-router-dom": "^6.19.0"
   },
   "dependencies": {
     "@designable/core": "1.0.0-beta.45",

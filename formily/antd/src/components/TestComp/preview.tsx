@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { Col, Row, Button, Input } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { Select as AntdSelect, Space } from '@formily/antd'
@@ -38,24 +38,48 @@ export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
     setSelectedItems(spareParts)
   }
   const SelectItemRows = selectedItems.map((row) => {
-    const deleteSpare = (itemnum) => {}
+    const deleteSpare = (itemnum) => {
+      // let spareParts = [...selectedItems];
+      // const index = spareParts.findIndex(({value}) => value === itemnum);
+      // if(index != -1) {
+      //   spareParts.splice(index, 1);
+      // }
+      // setSelectedItems(spareParts);
+    }
+    const subtract = (row) => {
+      // if(row.sparenum <= 1) return;
+      // row.sparenum -= 1;
+      // let spareParts = [...selectedItems];
+      // const index = spareParts.findIndex(({value}) => value === row.value);
+      // spareParts.splice(index,1,row);
+      // setSelectedItems(spareParts);
+    }
+    const addition = (row) => {
+      // row.sparenum += 1;
+      // let spareParts = [...selectedItems];
+      // const index = spareParts.findIndex(({value}) => value === row.value);
+      // spareParts.splice(index,1,row);
+      // setSelectedItems(spareParts);
+    }
     return (
       <>
         <Row>
           <Col span={20}>{row.label}</Col>
           <Col span={4}>
-            <DeleteOutlined onClick={deleteSpare(row.value)} />
+            <span onClick={deleteSpare(row.value)}>
+              <DeleteOutlined />
+            </span>
           </Col>
         </Row>
         <Row>
           <div>
-            <Button onClick={}>-</Button>
+            <Button onClick={subtract(row)}>-</Button>
           </div>
           <div>
             <Input disabled value={row.sparenum}></Input>
           </div>
           <div>
-            <Button>+</Button>
+            <Button onClick={addition(row)}>+</Button>
           </div>
         </Row>
       </>
