@@ -4,9 +4,11 @@ import { useDesigner, TextWidget } from '@designable/react'
 import { GlobalRegistry } from '@designable/core'
 import { observer } from '@formily/react'
 import { loadInitialSchema, saveSchema, publishSchema } from '../service'
-
+import { useNavigate } from 'react-router-dom'
+import { transformToSchema } from '@designable/formily-transformer'
 export const ActionsWidget = observer(() => {
   const designer = useDesigner()
+  const navigate = useNavigate()
   useEffect(() => {
     loadInitialSchema(designer)
   }, [])
@@ -18,9 +20,6 @@ export const ActionsWidget = observer(() => {
   }, [])
   return (
     <Space style={{ marginRight: 10 }}>
-      {/* <Button href="https://designable-fusion.formilyjs.org">
-        Alibaba Fusion
-      </Button> */}
       <Radio.Group
         value={GlobalRegistry.getDesignerLanguage()}
         optionType="button"
@@ -32,13 +31,14 @@ export const ActionsWidget = observer(() => {
           GlobalRegistry.setDesignerLanguage(e.target.value)
         }}
       />
-      {/* <Button href="https://github.com/alibaba/designable" target="_blank">
-        <GithubOutlined />
-        Github
-      </Button> */}
       <Button
         onClick={() => {
           saveSchema(designer)
+          if ((window as any).__POWERED_BY_QIANKUN__) {
+            navigate('/preview', {
+              state: transformToSchema(designer.getCurrentTree()),
+            })
+          }
         }}
       >
         <TextWidget>Save</TextWidget>
@@ -47,6 +47,11 @@ export const ActionsWidget = observer(() => {
         type="primary"
         onClick={() => {
           publishSchema(designer)
+          if ((window as any).__POWERED_BY_QIANKUN__) {
+            navigate('/preview', {
+              state: transformToSchema(designer.getCurrentTree()),
+            })
+          }
         }}
       >
         <TextWidget>Publish</TextWidget>

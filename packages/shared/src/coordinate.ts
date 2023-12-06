@@ -67,6 +67,8 @@ export class Rect implements IRect {
   get bottom() {
     return this.y + this.height
   }
+
+  toJSON() {}
 }
 
 export class LineSegment {
@@ -83,6 +85,7 @@ export interface IRect {
   y: number
   width: number
   height: number
+  toJSON(): any
 }
 
 export enum RectQuadrant {

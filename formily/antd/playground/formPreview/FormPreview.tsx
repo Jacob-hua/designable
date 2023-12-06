@@ -27,10 +27,12 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
+  FormButtonGroup,
 } from '@formily/antd'
 import { Card, Slider, Rate } from 'antd'
 import { TreeNode } from '@designable/core'
 import { TestComp } from '../../src'
+import { useLocation } from 'react-router-dom'
 
 const Text: React.FC<{
   value?: string
@@ -80,15 +82,21 @@ export interface IPreviewWidgetProps {
   tree: TreeNode
 }
 
-export const FormPreview = (props) => {
+export const FormPreview = () => {
   const form = useMemo(() => createForm(), [])
-  // const { form: formProps, schema } = transformToSchema(props.tree)
-  const { form: formProps, schema } = JSON.parse(
-    localStorage.getItem('formily-schema') ?? ''
-  )
+  const location = useLocation()
+  const { form: formProps, schema } =
+    location.state ?? JSON.parse(localStorage.getItem('formily-schema') ?? '')
+  const handleSubmit = () => {
+    // eslint-disable-next-line no-console
+    console.log('a')
+  }
   return (
     <FormProvider {...formProps} form={form}>
       <SchemaField schema={schema} />
+      <FormButtonGroup>
+        <Submit onSubmit={handleSubmit}>提交</Submit>
+      </FormButtonGroup>
     </FormProvider>
   )
 }

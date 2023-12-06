@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, Input } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
-import { Select as AntdSelect, Space } from '@formily/antd'
+import { Select as AntdSelect } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import cls from 'classnames'
 import './styles.less'
-import { Container } from '../../common/Container'
 
 export interface IDesignableTestCompProps {
   value?: string
@@ -38,7 +36,7 @@ export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
     setSelectedItems(spareParts)
   }
   const SelectItemRows = selectedItems.map((row) => {
-    const deleteSpare = (itemnum) => {
+    const deleteSpare = (itemnum: string) => {
       // let spareParts = [...selectedItems];
       // const index = spareParts.findIndex(({value}) => value === itemnum);
       // if(index != -1) {
@@ -46,7 +44,7 @@ export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
       // }
       // setSelectedItems(spareParts);
     }
-    const subtract = (row) => {
+    const subtract = (row: SparePart) => {
       // if(row.sparenum <= 1) return;
       // row.sparenum -= 1;
       // let spareParts = [...selectedItems];
@@ -54,7 +52,7 @@ export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
       // spareParts.splice(index,1,row);
       // setSelectedItems(spareParts);
     }
-    const addition = (row) => {
+    const addition = (row: SparePart) => {
       // row.sparenum += 1;
       // let spareParts = [...selectedItems];
       // const index = spareParts.findIndex(({value}) => value === row.value);
@@ -66,20 +64,20 @@ export const TestComp: DnFC<IDesignableTestCompProps> = (props) => {
         <Row>
           <Col span={20}>{row.label}</Col>
           <Col span={4}>
-            <span onClick={deleteSpare(row.value)}>
+            <span onClick={() => deleteSpare(row.value)}>
               <DeleteOutlined />
             </span>
           </Col>
         </Row>
         <Row>
           <div>
-            <Button onClick={subtract(row)}>-</Button>
+            <Button onClick={() => subtract(row)}>-</Button>
           </div>
           <div>
             <Input disabled value={row.sparenum}></Input>
           </div>
           <div>
-            <Button onClick={addition(row)}>+</Button>
+            <Button onClick={() => addition(row)}>+</Button>
           </div>
         </Row>
       </>

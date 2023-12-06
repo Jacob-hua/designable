@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import { GlobSync } from 'glob'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import autoprefixer from 'autoprefixer'
-//import { getThemeVariables } from 'antd/dist/theme'
+// import { getThemeVariables } from 'antd/dist/theme'
 
 const getWorkspaceAlias = () => {
   const basePath = path.resolve(__dirname, '../../../')
@@ -32,15 +32,19 @@ export default {
     children: false,
   },
   entry: {
-    playground: path.resolve(__dirname, './main'),
+    playground: path.resolve(__dirname, './main.tsx'),
   },
   output: {
-    path: path.resolve(__dirname, '../build'),
+    // publicPath: `/designable/`,
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].bundle.js',
-    library: `designable-[name]`,
+    library: `formDesigner`,
     libraryTarget: 'umd',
-    jsonpFunction: `webpackJsonp_designable`,
+    jsonpFunction: `webpackJsonp_formDesigner`,
     globalObject: 'window',
+  },
+  performance: {
+    hints: false,
   },
   resolve: {
     modules: ['node_modules'],

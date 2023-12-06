@@ -20,7 +20,9 @@ function createDOM(flag: boolean) {
     return (
       <BrowserRouter
         // 对两种不同的环境分别给出不同的基础路径
-        basename={(window as any).__POWERED_BY_QIANKUN__ ? '/designable' : '/'}
+        basename={
+          (window as any).__POWERED_BY_QIANKUN__ ? '/formDesigner' : '/'
+        }
       >
         <App />
       </BrowserRouter>

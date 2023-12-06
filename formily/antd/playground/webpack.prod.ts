@@ -18,6 +18,10 @@ const createPages = (pages) => {
 export default {
   ...baseConfig,
   mode: 'production',
+  output: {
+    ...baseConfig.output,
+    publicPath: '/designable/',
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
