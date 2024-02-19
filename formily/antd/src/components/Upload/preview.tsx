@@ -18,16 +18,16 @@ Upload.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.Upload),
     },
     designerLocales: AllLocales.Upload,
-  },
-  {
-    name: 'Upload.Dragger',
-    extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Upload.Dragger',
-    designerProps: {
-      propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
-    },
-    designerLocales: AllLocales.UploadDragger,
   }
+  // {
+  //   name: 'Upload.Dragger',
+  //   extends: ['Field'],
+  //   selector: (node) => node.props['x-component'] === 'Upload.Dragger',
+  //   designerProps: {
+  //     propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
+  //   },
+  //   designerLocales: AllLocales.UploadDragger,
+  // }
 )
 
 Upload.Resource = createResource(
@@ -47,22 +47,22 @@ Upload.Resource = createResource(
         },
       },
     ],
-  },
-  {
-    icon: 'UploadDraggerSource',
-    elements: [
-      {
-        componentName: 'Field',
-        props: {
-          type: 'Array<object>',
-          title: 'Drag Upload',
-          'x-decorator': 'FormItem',
-          'x-component': 'Upload.Dragger',
-          'x-component-props': {
-            textContent: 'Click or drag file to this area to upload',
-          },
-        },
-      },
-    ],
   }
+  // {
+  //   icon: 'UploadDraggerSource',
+  //   elements: [
+  //     {
+  //       componentName: 'Field',
+  //       props: {
+  //         type: 'Array<object>',
+  //         title: 'Drag Upload',
+  //         'x-decorator': 'FormItem',
+  //         'x-component': 'Upload.Dragger',
+  //         'x-component-props': {
+  //           textContent: 'Click or drag file to this area to upload',
+  //         },
+  //       },
+  //     },
+  //   ],
+  // }
 )

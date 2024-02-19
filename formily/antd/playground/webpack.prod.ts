@@ -20,7 +20,7 @@ export default {
   mode: 'production',
   output: {
     ...baseConfig.output,
-    publicPath: '/designable/',
+    publicPath: '/children/',
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -1,4 +1,4 @@
-import 'antd/dist/antd.less'
+import 'antd/dist/antd.dark.less'
 import React, { useMemo } from 'react'
 import {
   Designer,
@@ -19,7 +19,7 @@ import {
 } from '@designable/react'
 import {
   SettingsForm,
-  setNpmCDNRegistry,
+  // setNpmCDNRegistry,
 } from '@designable/react-settings-form'
 import {
   createDesigner,
@@ -40,33 +40,33 @@ import {
   Field,
   Input,
   Select,
-  TreeSelect,
+  // TreeSelect,
   Cascader,
   Radio,
   Checkbox,
   Slider,
   Rate,
   NumberPicker,
-  Transfer,
+  // Transfer,
   Password,
   DatePicker,
-  TimePicker,
+  // TimePicker,
   Upload,
   Switch,
   Text,
   Card,
   ArrayCards,
-  ObjectContainer,
-  ArrayTable,
-  Space,
-  FormTab,
+  // ObjectContainer,
+  // ArrayTable,
+  // Space,
+  // FormTab,
   FormCollapse,
-  FormLayout,
-  FormGrid,
-  TestComp,
+  // FormLayout,
+  // FormGrid,
+  // TestComp,
 } from '../../src'
 
-setNpmCDNRegistry('//unpkg.com')
+// setNpmCDNRegistry('//unpkg.com')
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
@@ -83,14 +83,6 @@ GlobalRegistry.registerDesignerLocales({
       Layouts: 'Layouts',
       Arrays: 'Arrays',
       Displays: 'Displays',
-    },
-  },
-  'ko-KR': {
-    sources: {
-      Inputs: '입력',
-      Layouts: '레이아웃',
-      Arrays: '배열',
-      Displays: '디스플레이',
     },
   },
 })
@@ -128,36 +120,42 @@ export const DesingerView = () => {
                 Rate,
                 Slider,
                 Select,
-                TreeSelect,
+                // TreeSelect,
                 Cascader,
-                Transfer,
+                // Transfer,
                 Checkbox,
                 Radio,
                 DatePicker,
-                TimePicker,
+                // TimePicker,
                 Upload,
                 Switch,
-                ObjectContainer,
+                // ObjectContainer,
               ]}
             />
             <ResourceWidget
               title="sources.Layouts"
               sources={[
                 Card,
-                FormGrid,
-                FormTab,
-                FormLayout,
+                // FormGrid,
+                // FormTab,
+                // FormLayout,
                 FormCollapse,
-                Space,
+                // Space,
               ]}
             />
             <ResourceWidget
               title="sources.Arrays"
-              sources={[ArrayCards, ArrayTable]}
+              sources={[
+                ArrayCards,
+                // ArrayTable
+              ]}
             />
             <ResourceWidget
               title="sources.Displays"
-              sources={[Text, TestComp]}
+              sources={[
+                Text,
+                // TestComp
+              ]}
             />
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
@@ -184,30 +182,30 @@ export const DesingerView = () => {
                       Field,
                       Input,
                       Select,
-                      TreeSelect,
+                      // TreeSelect,
                       Cascader,
                       Radio,
                       Checkbox,
                       Slider,
                       Rate,
                       NumberPicker,
-                      Transfer,
+                      // Transfer,
                       Password,
                       DatePicker,
-                      TimePicker,
+                      // TimePicker,
                       Upload,
                       Switch,
                       Text,
                       Card,
                       ArrayCards,
-                      ArrayTable,
-                      Space,
-                      FormTab,
+                      // ArrayTable,
+                      // Space,
+                      // FormTab,
                       FormCollapse,
-                      FormGrid,
-                      FormLayout,
-                      ObjectContainer,
-                      TestComp,
+                      // FormGrid,
+                      // FormLayout,
+                      // ObjectContainer,
+                      // TestComp,
                     }}
                   />
                 )}
@@ -227,7 +225,7 @@ export const DesingerView = () => {
           </WorkspacePanel>
         </Workspace>
         <SettingsPanel title="panels.PropertySettings">
-          <SettingsForm uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" />
+          <SettingsForm />
         </SettingsPanel>
       </StudioPanel>
     </Designer>

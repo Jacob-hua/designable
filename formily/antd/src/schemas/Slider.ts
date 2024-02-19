@@ -9,12 +9,12 @@ export const Slider: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
     },
-    dots: {
-      title: GlobalRegistry.getDesignerMessage('settings.sliderDots'),
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-    },
+    // dots: {
+    //   title: GlobalRegistry.getDesignerMessage('settings.sliderDots'),
+    //   type: 'boolean',
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Switch',
+    // },
     range: {
       title: GlobalRegistry.getDesignerMessage('settings.sliderRange'),
       type: 'boolean',

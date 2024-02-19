@@ -38,7 +38,7 @@ export default {
     // publicPath: `/designable/`,
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].bundle.js',
-    library: `formDesigner`,
+    library: `formDesigner-[name]`,
     libraryTarget: 'umd',
     jsonpFunction: `webpackJsonp_formDesigner`,
     globalObject: 'window',
@@ -51,12 +51,12 @@ export default {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: getWorkspaceAlias(),
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    moment: 'moment',
-    antd: 'antd',
-  },
+  // externals: {
+  //   react: 'React',
+  //   'react-dom': 'ReactDOM',
+  //   moment: 'moment',
+  //   antd: 'antd',
+  // },
   module: {
     rules: [
       {

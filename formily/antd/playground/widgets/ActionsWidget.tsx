@@ -12,7 +12,7 @@ export const ActionsWidget = observer(() => {
   useEffect(() => {
     loadInitialSchema(designer)
   }, [])
-  const supportLocales = ['zh-cn', 'en-us', 'ko-kr']
+  const supportLocales = ['zh-cn', 'en-us']
   useEffect(() => {
     if (!supportLocales.includes(GlobalRegistry.getDesignerLanguage())) {
       GlobalRegistry.setDesignerLanguage('zh-cn')

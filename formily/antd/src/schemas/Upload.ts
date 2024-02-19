@@ -100,4 +100,4 @@ export const Upload: ISchema & { Dragger?: ISchema } = {
   },
 }
 
-Upload.Dragger = Upload
+// Upload.Dragger = Upload

@@ -76,70 +76,77 @@ export const createComponentSchema = (
 
 export const createFieldSchema = (
   component?: ISchema,
+  filterItems?: string[],
   decorator: ISchema = AllSchemas.FormItem
 ): ISchema => {
+  let properties = {
+    name: {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+    },
+    title: {
+      type: 'string',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+    },
+    // description: {
+    //   type: 'string',
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Input.TextArea',
+    // },
+    'x-display': {
+      type: 'string',
+      enum: ['visible', 'hidden', 'none', ''],
+      'x-decorator': 'FormItem',
+      'x-component': 'Select',
+      'x-component-props': {
+        defaultValue: 'visible',
+      },
+    },
+    'x-pattern': {
+      type: 'string',
+      enum: ['editable', 'disabled', 'readOnly', 'readPretty', ''],
+      'x-decorator': 'FormItem',
+      'x-component': 'Select',
+      'x-component-props': {
+        defaultValue: 'editable',
+      },
+    },
+    default: {
+      'x-decorator': 'FormItem',
+      'x-component': 'ValueInput',
+    },
+    enum: {
+      'x-decorator': 'FormItem',
+      'x-component': DataSourceSetter,
+    },
+    'x-reactions': {
+      'x-decorator': 'FormItem',
+      'x-component': ReactionsSetter,
+    },
+    'x-validator': {
+      type: 'array',
+      'x-component': ValidatorSetter,
+    },
+    required: {
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Switch',
+    },
+  }
+  if (filterItems && filterItems.length) {
+    for (let item of filterItems) {
+      delete properties[item]
+    }
+  }
   return {
     type: 'object',
     properties: {
       'field-group': {
         type: 'void',
         'x-component': 'CollapseItem',
-        properties: {
-          name: {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': 'Input',
-          },
-          title: {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': 'Input',
-          },
-          description: {
-            type: 'string',
-            'x-decorator': 'FormItem',
-            'x-component': 'Input.TextArea',
-          },
-          'x-display': {
-            type: 'string',
-            enum: ['visible', 'hidden', 'none', ''],
-            'x-decorator': 'FormItem',
-            'x-component': 'Select',
-            'x-component-props': {
-              defaultValue: 'visible',
-            },
-          },
-          'x-pattern': {
-            type: 'string',
-            enum: ['editable', 'disabled', 'readOnly', 'readPretty', ''],
-            'x-decorator': 'FormItem',
-            'x-component': 'Select',
-            'x-component-props': {
-              defaultValue: 'editable',
-            },
-          },
-          default: {
-            'x-decorator': 'FormItem',
-            'x-component': 'ValueInput',
-          },
-          enum: {
-            'x-decorator': 'FormItem',
-            'x-component': DataSourceSetter,
-          },
-          'x-reactions': {
-            'x-decorator': 'FormItem',
-            'x-component': ReactionsSetter,
-          },
-          'x-validator': {
-            type: 'array',
-            'x-component': ValidatorSetter,
-          },
-          required: {
-            type: 'boolean',
-            'x-decorator': 'FormItem',
-            'x-component': 'Switch',
-          },
-        },
+        properties: properties,
       },
       ...createComponentSchema(component, decorator),
     },

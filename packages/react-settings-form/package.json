@@ -8,14 +8,6 @@
     "npm": ">=3.0.0"
   },
   "module": "esm",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alibaba/designable.git"
-  },
-  "bugs": {
-    "url": "https://github.com/alibaba/designable/issues"
-  },
-  "homepage": "https://github.com/alibaba/designable#readme",
   "scripts": {
     "build": "rimraf -rf lib esm dist && npm run build:cjs && npm run build:esm && npm run build:umd && ts-node copy",
     "build:cjs": "tsc --project tsconfig.build.json",
@@ -46,7 +38,7 @@
     "@designable/react": "1.0.0-beta.45",
     "@designable/shared": "1.0.0-beta.45",
     "@monaco-editor/react": "^4.2.1",
-    "monaco-editor": "^0.25.2",
+    "monaco-editor": "^0.30.1",
     "prettier": "^2.3.2",
     "react-color": "^2.19.3",
     "react-tiny-popover": "^6.0.5"

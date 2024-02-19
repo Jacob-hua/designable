@@ -18,14 +18,14 @@ export const Select: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
     },
-    autoClearSearchValue: {
-      type: 'boolean',
-      'x-decorator': 'FormItem',
-      'x-component': 'Switch',
-      'x-component-props': {
-        defaultChecked: true,
-      },
-    },
+    // autoClearSearchValue: {
+    //   type: 'boolean',
+    //   'x-decorator': 'FormItem',
+    //   'x-component': 'Switch',
+    //   'x-component-props': {
+    //     defaultChecked: true,
+    //   },
+    // },
     dropdownMatchSelectWidth: {
       type: 'boolean',
       'x-decorator': 'FormItem',

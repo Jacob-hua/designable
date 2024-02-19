@@ -1,5 +1,5 @@
 import '../public-path'
-import 'antd/dist/antd.less'
+import 'antd/dist/antd.dark.less'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
